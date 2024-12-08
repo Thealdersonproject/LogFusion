@@ -32,6 +32,7 @@ def main() -> None:
         install_requires=project_info["dependencies"],
         classifiers=project_info["classifiers"],
         python_requires=project_info["requires-python"],
+        package_data={"include": ["typings/*.pyi"]},
     )
 
 
