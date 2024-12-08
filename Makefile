@@ -83,4 +83,5 @@ build:
 #	make test
 
 	@echo building wheel
+	uv run pyright
 	uv pip install .
