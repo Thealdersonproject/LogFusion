@@ -1,4 +1,4 @@
-"""This is the __init__.py file.txt for the logfusion files."""
+"""This is the __init__.py file.txt for the LogFusion files."""
 
 from .config import default_config, get_config, set_config
 from .decorators import log_function, log_method
