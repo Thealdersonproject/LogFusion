@@ -66,7 +66,8 @@ exclude = [
     "**/__pycache__",
     "**/tests",
     "./logfusion/decorators.py",
-    "./examples"
+    "./examples",
+    "./typings"
 ]
 typeCheckingMode = "strict"  # For strictest type checking
 reportMissingTypeStubs = true
