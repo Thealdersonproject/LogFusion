@@ -19,7 +19,8 @@ dev-dependencies = [
     "pytest==8.3.3",
     "ruff==0.7.1",
     "typos==1.26.8",
-    "pre-commit"
+    "pre-commit",
+    "pyright",
 ]
 
 [tool.ruff]
@@ -50,7 +51,8 @@ exclude = [
     "**/.venv",
     "**/__pycache__",
     "**/tests",
-    "./logfusion/decorators.py"
+    "./logfusion/decorators.py",
+    "./examples"
 ]
 typeCheckingMode = "strict"  # For strictest type checking
 reportMissingTypeStubs = true
