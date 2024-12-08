@@ -1,8 +1,22 @@
 [project]
-name = "python-base-project"
+name = "LogFusion"
+authors = [
+  {email = "thiago@thir.info"},
+  {name = "Thiago Dias"}
+]
 version = "0.1.0"
-description = "Type here the description for your project."
+description = """
+This project aims to introduce a single service for logging, monitoring, and observability.
+LogFusion is designed to be a flexible and extensible logging framework that supports multiple logging handlers and integrations.
+The project includes a core logging functionality, configuration management, utility functions, and decorators for logging.
+It also supports various linters and formatters to ensure code quality and consistency.
+"""
 readme = "README.md"
+license = {file = "LICENSE.txt"}
+classifiers = [
+    "Programming Language :: Python",
+    "Operating System :: OS Independent",
+]
 requires-python = "~=3.12"
 dependencies = [
     "pre-commit>=4.0.1",
