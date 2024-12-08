@@ -4,7 +4,7 @@ authors = [
   {email = "thiago@thir.info"},
   {name = "Thiago Dias"}
 ]
-version = "0.1.0"
+version = "0.1.1"
 description = """
 This project aims to introduce a single service for logging, monitoring, and observability.
 LogFusion is designed to be a flexible and extensible logging framework that supports multiple logging handlers and integrations.
