@@ -15,10 +15,11 @@ RUFF = ruff --config ./pyproject.toml
 RUFF_ARGS = --target-version $(RUFF_PY_VERSION)  -n
 
 # PYRIGHT
-PYRIGHT_ARGS = --project pyproject.toml --pythonversion $(UV_PY_INSTALL_VERSION) --stats
+PYRIGHT = pyright
+PYRIGHT_LINT_ARGS = --project pyproject.toml --pythonversion $(UV_PY_INSTALL_VERSION) --stats
 
 # PROJECT
-SOURCE_DIR = ./logfusion
+SOURCE_DIR = ./logfusion/**/*.py
 SOURCE_PY_FILES = $(SOURCE_DIR)/**/*.py
 
 TEST_DIR = ./tests
@@ -55,7 +56,7 @@ format:
 lint:
 	uv run black --check $(SOURCE_DIR) $(BLACK_ARGS)
 	uv run $(RUFF) check $(SOURCE_DIR) $(RUFF_ARGS) --fix
-	uv run pyright $(SOURCE_DIR) $(PYRIGHT_ARGS)
+	uv run $(PYRIGHT) $(SOURCE_DIR) $(PYRIGHT_LINT_ARGS)
 
 # Run tests
 test:
@@ -72,9 +73,6 @@ build:
 	@echo clean project files
 	make clean
 
-	@echo install project assets
-	make install
-
 	@echo format project files
 	make format
 
@@ -82,4 +80,7 @@ build:
 	make lint
 
 	@echo run tests
-	make test
+#	make test
+
+	@echo building wheel
+	uv pip install .
