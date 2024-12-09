@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Setup for LogFusion."""
 
 import tomllib
@@ -32,7 +33,8 @@ def main() -> None:
         install_requires=project_info["dependencies"],
         classifiers=project_info["classifiers"],
         python_requires=project_info["requires-python"],
-        package_data={"include": ["typings/*.pyi"]},
+        include_package_data=True,
+        package_data={"typings": ["*.pyi"]},
     )
 
 
