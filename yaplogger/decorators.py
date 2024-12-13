@@ -4,8 +4,8 @@
 from functools import wraps
 from typing import Any, ParamSpec
 
-from logfusion.config import get_config
-from logfusion.logger import Logger
+from yaplogger.config import get_config
+from yaplogger.logger import Logger
 
 P = ParamSpec("P")
 
