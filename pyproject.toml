@@ -63,11 +63,11 @@ exclude = [
     "**/.venv",
     "**/__pycache__",
     "**/tests",
-    "./logfusion/decorators.py",
+    "./yaplogger/decorators.py",
     "./examples",
     "./typings"
 ]
-typeCheckingMode = "strict"  # For strictest type checking
+typeCheckingMode = "strict"
 reportMissingTypeStubs = true
 reportUnknownParameterType = true
 reportUnknownArgumentType = true
