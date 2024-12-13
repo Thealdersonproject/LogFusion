@@ -1,5 +1,41 @@
+# ./yaplogger/decorators.py
 # ruff: noqa
-"""Decorators to log function and method calls."""
+"""Decorators to log function and method calls.
+
+This module provides decorators to log function and method calls. The decorators use the `Logger` class from
+the `yaplogger` package to log information about the function or method being called, including the arguments and
+return values. If an exception occurs, the decorators will log the exception and re-raise it.
+
+Decorators:
+    - log_function: Decorator to log function calls.
+    - log_method: Decorator to log method calls.
+
+Usage:
+    ```python
+    from yaplogger.decorators import log_function, log_method
+
+
+    @log_function()
+    def example_function(x: int, y: int) -> int:
+        return x + y
+
+
+    class ExampleClass:
+        @log_method()
+        def example_method(self, x: int, y: int) -> int:
+            return x + y
+
+
+    # Call the decorated function and method
+    result = example_function(3, 4)
+    example = ExampleClass()
+    result = example.example_method(5, 6)
+    ```
+
+Note:
+    This module is part of the YapLogger project, which aims to provide a flexible and extensible logging
+    framework for logging, monitoring, and observability.
+"""
 
 from functools import wraps
 from typing import Any, ParamSpec
@@ -29,7 +65,6 @@ def log_function(config: dict[str, Any] | None = None) -> Any:
             except Exception as e:
                 logger.exception(f"{func.__name__} raised an exception.", exc_info=e)
                 raise
-
             return result
 
         return wrapper
@@ -53,7 +88,6 @@ def log_method(config: dict[str, Any] | None = None):
             try:
                 result = method(self, *args, **kwargs)
                 logger.info(f"{method.__name__} returned {result}")
-
             except Exception as e:
                 logger.exception(f"{method.__name__} raised an exception.", exc_info=e)
                 raise
