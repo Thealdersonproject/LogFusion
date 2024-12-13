@@ -1,8 +1,8 @@
-# LogFusion
+# Yaplogger
 
 ## Overview
 
-LogFusion is a flexible and extensible logging framework designed to provide a single service for logging, monitoring, and observability. It supports multiple logging handlers and integrations, making it easy to manage and extend your logging needs.
+YapLogger is a flexible and extensible logging framework designed to provide a single service for logging, monitoring, and observability. It supports multiple logging handlers and integrations, making it easy to manage and extend your logging needs.
 
 ## Features
 
@@ -24,8 +24,8 @@ LogFusion is a flexible and extensible logging framework designed to provide a s
 1. **Clone the Repository:**
 
    ```sh
-   git clone https://github.com/Thealdersonproject/LogFusion.git
-   cd LogFusion
+   git clone https://github.com/Thealdersonproject/YapLogger.git
+   cd yaplogger
     ```
 2.	Use the Makefile to Install Dependencies:
    ```sh
