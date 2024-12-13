@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Setup for LogFusion."""
+"""Setup for YapLogger."""
 
 import tomllib
 from pathlib import Path
