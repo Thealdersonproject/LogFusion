@@ -3,8 +3,8 @@
 
 from typing import Any
 
-from logfusion.config import get_config, set_config
-from logfusion.logger import Logger
+from yaplogger.config import get_config, set_config
+from yaplogger.logger import Logger
 
 
 def main() -> None:
