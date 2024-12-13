@@ -1,3 +1,4 @@
+# ./yaplogger/handlers/base_handler.py
 """Abstract base class for logging handlers.
 
 This module provides an abstract base class (`BaseHandler`) for logging handlers.

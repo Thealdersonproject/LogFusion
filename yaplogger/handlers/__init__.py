@@ -1,4 +1,4 @@
-# handlers/__init__.py
+# ./yaplogger/handlers/__init__.py
 """This module initializes the handlers package, which contains various logging handlers for the YapLogger project.
 
 The handlers package provides a base handler class (`BaseHandler`) that can be extended

@@ -1,3 +1,4 @@
+# ./yaplogger/handlers/loguru_handler.py
 """A logging handler that uses Loguru for logging.
 
 This module provides a `LoguruHandler` class that integrates with the Loguru logging library.
