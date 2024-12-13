@@ -2,9 +2,9 @@
 
 from typing import Any
 
-from logfusion.config import get_config, set_config
-from logfusion.decorators import log_function, log_method
-from logfusion.logger import Logger
+from yaplogger.config import get_config, set_config
+from yaplogger.decorators import log_function, log_method
+from yaplogger.logger import Logger
 
 # Set the configuration
 config: dict[str, Any] = {"log_level": "DEBUG", "dev_mode": False, "handlers": {"loguru": {}}}
