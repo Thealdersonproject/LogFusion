@@ -1,5 +1,5 @@
 version = 1
-requires-python = ">=3.12, <4"
+requires-python = ">=3.12"
 
 [[package]]
 name = "black"
@@ -331,8 +331,8 @@ wheels = [
 
 [[package]]
 name = "yaplogger"
-version = "0.1.4.1"
-source = { virtual = "." }
+version = "0.1.4"
+source = { editable = "." }
 dependencies = [
     { name = "loguru" },
     { name = "setuptools" },

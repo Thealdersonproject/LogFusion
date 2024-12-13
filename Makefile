@@ -1,9 +1,9 @@
-#./Makefile
+# ./Makefile
 
 # PYTHON
-PIP = python3 -m pip
-RUFF_PY_VERSION = py312
-UV_PY_INSTALL_VERSION = 3.12
+PYTHON_VERSION := $(shell cat .python-version)
+PIP = python$(PYTHON_VERSION) -m pip
+UV_PY_INSTALL_VERSION = $(PYTHON_VERSION)
 UV_PY_VERSION = --python $(UV_PY_INSTALL_VERSION)
 UV_ENV_ARGS = --allow-existing
 
@@ -12,7 +12,7 @@ BLACK_ARGS = --config ./pyproject.toml
 
 # RUFF
 RUFF = ruff --config ./pyproject.toml
-RUFF_ARGS = --target-version $(RUFF_PY_VERSION)  -n
+RUFF_ARGS = --target-version py$(PYTHON_VERSION) -n
 
 # PYRIGHT
 PYRIGHT = pyright
@@ -40,8 +40,9 @@ help:
 
 # Install dependencies
 install:
-	$(PIP) install --upgrade pip
-	$(PIP) install -r requirements.txt
+	rm -rf .venv
+	python3 -m pip install --upgrade pip
+	python3 -m pip install -r requirements.txt
 	uv python install $(UV_PY_INSTALL_VERSION)
 	uv venv $(UV_PY_VERSION) $(UV_ENV_ARGS)
 	uv sync
@@ -68,19 +69,19 @@ clean:
 	find . -type f -name "*.pyc" -delete
 	rm -rf .pytest_cache
 
-# run the phony as bellow
+# Run the phony as below
 build:
-	@echo clean project files
+	@echo "Clean project files"
 	make clean
 
-	@echo format project files
+	@echo "Format project files"
 	make format
 
-	@echo check project lint
+	@echo "Check project lint"
 	make lint
 
-	@echo run tests
-#	make test
+	@echo "Run tests"
+	make test
 
-	@echo building wheel
+	@echo "Building wheel"
 	uv pip install .
