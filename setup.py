@@ -5,7 +5,25 @@ import tomllib
 from pathlib import Path
 from typing import Any
 
-from setuptools import setup
+from setuptools import find_packages, setup
+from setuptools.command.develop import develop
+from setuptools.command.egg_info import egg_info
+from setuptools.command.install import install
+
+
+class CustomInstallCommand(install):  # noqa: D101
+    def run(self) -> None:  # noqa: D102
+        install.run(self)
+
+
+class CustomDevelopCommand(develop):  # noqa: D101
+    def run(self) -> None:  # noqa: D102
+        develop.run(self)
+
+
+class CustomEggInfoCommand(egg_info):  # noqa: D101
+    def run(self) -> None:  # noqa: D102
+        egg_info.run(self)
 
 
 def load_pyproject_toml(file_path: Path) -> dict[str, Any]:
@@ -20,45 +38,42 @@ with Path("README.md").open(encoding="utf-8") as fh:
 
 def main() -> None:
     """Main method."""
-    # Load the pyproject.toml file
-    pyproject_content = load_pyproject_toml(Path("pyproject.toml"))
-
-    # Extract necessary information from the pyproject.toml file
-    project_info = pyproject_content["project"]
-
     setup(
-        # Basic project information
-        name=project_info["name"],
-        version=project_info["version"],
-        author=project_info["authors"][0],
-        author_email=project_info["authors"][0],
-        description=project_info["description"],
-        long_description=long_description,
+        name="YapLogger",
+        version="0.1.4.1",
+        author="Thiago Dias",
+        author_email="thiago@thir.info",
+        description="A flexible and extensible logging framework for logging, monitoring, and observability.",
+        long_description=open("README.md").read(),  # noqa: PTH123, SIM115
         long_description_content_type="text/markdown",
-        # Project URLs
-        url="https://github.com/TheAldersonProject/YapLogger",
-        # Package discovery
-        package_dir={"yaplogger": ""},
-        # Package data
-        include_package_data=True,
+        url="https://github.com/TheAldersonProject/YapLogger",  # Replace with your actual GitHub URL
+        packages=find_packages(include=["yaplogger*", "typings*"]),
         package_data={
-            "": ["*.json", "*.yaml", "*.pyi"],
+            "": ["LICENSE", "README.md"],
+            "typings": ["**/*.pyi"],  # Include all .pyi files in typings
+            "yaplogger": ["py.typed"],  # Marker file for PEP 561 compliance
         },
-        # Dependencies
-        python_requires=project_info["requires-python"],
-        install_requires=project_info["dependencies"],
-        # Classifiers help users find your project
         classifiers=[
+            "Programming Language :: Python",
+            "Operating System :: OS Independent",
+            "Programming Language :: Python :: 3.12",
             "Development Status :: 3 - Alpha",
             "Intended Audience :: Developers",
-            "License :: OSI Approved :: BSD License",
-            "Operating System :: OS Independent",
-            f"Programming Language :: Python :: {project_info['requires-python']}",
-            "Topic :: Software Development :: Libraries :: Python Modules",
+            "Typing :: Typed",  # Added to indicate type support
         ],
-        # Additional metadata
-        platforms=["any"],
-        zip_safe=False,
+        python_requires="~=3.12",
+        install_requires=[
+            "loguru>=0.7.2",
+            "setuptools>=75.6.0",
+            "wheel>=0.45.1",
+            "types-setuptools>=75.6.0.20241126",
+        ],
+        cmdclass={
+            "install": CustomInstallCommand,
+            "develop": CustomDevelopCommand,
+            "egg_info": CustomEggInfoCommand,
+        },
+        zip_safe=False,  # Required for type hints to work properly
     )
 
 
