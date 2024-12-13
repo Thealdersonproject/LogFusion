@@ -1,4 +1,5 @@
 # ruff: noqa
+# ./examples/basic_usage.py
 """Tests YapLogger basic usage."""
 
 from typing import Any

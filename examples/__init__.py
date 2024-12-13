@@ -1,4 +1,4 @@
-# examples/__init__.py
+# ./examples/__init__.py
 """This module initializes the examples package, which contains various usage examples for the YapLogger project.
 
 The examples package provides demonstrations of both basic and advanced usage of the YapLogger logging framework.
