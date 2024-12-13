@@ -1,5 +1,5 @@
 [project]
-name = "LogFusion"
+name = "YapLogger"
 authors = [
   {email = "thiago@thir.info"},
   {name = "Thiago Dias"}
@@ -7,7 +7,7 @@ authors = [
 version = "0.1.4.1"
 description = """
 This project aims to introduce a single service for logging, monitoring, and observability.
-LogFusion is designed to be a flexible and extensible logging framework that supports multiple logging handlers and integrations.
+YapLogger is designed to be a flexible and extensible logging framework that supports multiple logging handlers and integrations.
 The project includes a core logging functionality, configuration management, utility functions, and decorators for logging.
 It also supports various linters and formatters to ensure code quality and consistency.
 """
@@ -36,7 +36,7 @@ dev-dependencies = [
 ]
 
 [tool.ruff]
-src = ["logfusion"]
+src = ["yaplogger"]
 line-length = 120
 show-fixes = true
 unsafe-fixes = true
@@ -58,7 +58,7 @@ convention = "google"
 max-args = 10
 
 [tool.pyright]
-include = ["logfusion"]  # Adjust this to your source directory
+include = ["yaplogger"]
 exclude = [
     "**/.venv",
     "**/__pycache__",
