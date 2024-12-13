@@ -1,4 +1,4 @@
-# Makefile
+#./Makefile
 
 # PYTHON
 PIP = python3 -m pip

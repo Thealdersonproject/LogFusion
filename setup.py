@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# ./setup.py
 """Setup for YapLogger."""
 
 import tomllib
