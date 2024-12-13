@@ -65,7 +65,8 @@ exclude = [
     "**/tests",
     "./yaplogger/decorators.py",
     "./examples",
-    "./typings"
+    "./typings",
+    "setup.py"
 ]
 typeCheckingMode = "strict"
 reportMissingTypeStubs = true
