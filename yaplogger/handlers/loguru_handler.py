@@ -2,7 +2,7 @@
 
 from loguru import logger
 
-from logfusion.handlers.base_handler import BaseHandler
+from yaplogger.handlers.base_handler import BaseHandler
 
 
 class LoguruHandler(BaseHandler):
