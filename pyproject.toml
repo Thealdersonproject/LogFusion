@@ -4,7 +4,7 @@ authors = [
   {email = "thiago@thir.info"},
   {name = "Thiago Dias"}
 ]
-version = "0.1.4.1"
+version = "0.1.4.3"
 description = """
 This project aims to introduce a single service for logging, monitoring, and observability.
 YapLogger is designed to be a flexible and extensible logging framework that supports multiple logging handlers and integrations.
