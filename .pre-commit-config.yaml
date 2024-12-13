@@ -1,4 +1,4 @@
-exclude: typings, */decorators.py
+exclude: typings, "*/decorators.py", "*/__pycache__", "*/tests", "./examples"
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
