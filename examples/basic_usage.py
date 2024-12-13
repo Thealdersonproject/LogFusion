@@ -30,7 +30,7 @@ def main() -> None:
         raise ValueError(msg)  # noqa: TRY301
     except Exception as e:
         logger.exception("An exception occurred", exc_info=e)
-        logger.exception(f"An exception occurred: {e!s}")  # pyright: ignore [reportCallIssue]
+        logger.exception(f"An exception occurred:", exc_info=e)  # pyright: ignore [reportCallIssue]
         logger.info("Let's move on.")
 
 

@@ -1,10 +1,35 @@
-"""Tests YapLogger advanced usage."""
+# ./examples/advanced_usage.py
+"""Tests YapLogger advanced usage.
+
+This module demonstrates the advanced usage of the YapLogger logging framework.
+It includes examples of setting and getting configuration, using logging decorators,
+and handling exceptions with the Logger class.
+
+Functions:
+    - example_function: A function decorated with `log_function` to demonstrate logging.
+    - main: The main function that demonstrates the advanced usage of the Logger.
+
+Classes:
+    - ExampleClass: A class with a method decorated with `log_method` to demonstrate logging.
+
+Usage:
+    To run the advanced usage examples, execute the `main` function.
+
+Example:
+    ```python
+    if __name__ == "__main__":
+        main()
+    ```
+
+Note:
+    This module is part of the YapLogger project, which aims to provide a flexible
+    and extensible logging framework for logging, monitoring, and observability.
+"""
 
 from typing import Any
 
-from yaplogger.config import get_config, set_config
+from yaplogger import Logger, get_config, set_config
 from yaplogger.decorators import log_function, log_method
-from yaplogger.logger import Logger
 
 # Set the configuration
 config: dict[str, Any] = {"log_level": "DEBUG", "dev_mode": False, "handlers": {"loguru": {}}}
