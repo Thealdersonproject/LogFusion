@@ -6,7 +6,6 @@ from typing import Any
 
 """Load the configuration from pyproject.toml."""
 default_config: dict[str, Any] = ...
-
 def set_config(config: dict[str, Any]) -> None:
     """Set the logging configuration.
 
@@ -22,3 +21,4 @@ def get_config() -> dict[str, Any]:
         Dict[str, Any]: The logging configuration.
     """
     ...
+

@@ -6,7 +6,6 @@ from typing import Any, ParamSpec
 
 """Decorators to log function and method calls."""
 P = ParamSpec("P")
-
 def log_function(config: dict[str, Any] | None = ...) -> Any:
     """Decorator to log function calls.
 
@@ -15,12 +14,11 @@ def log_function(config: dict[str, Any] | None = ...) -> Any:
     """
     ...
 
-def log_method(
-    config: dict[str, Any] | None = ...,
-):  # -> Callable[..., _Wrapped[Callable[..., Any], Any, Callable[..., Any], Any]]:
+def log_method(config: dict[str, Any] | None = ...): # -> Callable[..., _Wrapped[Callable[..., Any], Any, Callable[..., Any], Any]]:
     """Decorator to log method calls.
 
     Args:
         config (dict, optional): The logging configuration. If not provided, the default configuration will be used.
     """
     ...
+
