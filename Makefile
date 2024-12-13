@@ -19,7 +19,7 @@ PYRIGHT = pyright
 PYRIGHT_LINT_ARGS = --project pyproject.toml --pythonversion $(UV_PY_INSTALL_VERSION) --stats
 
 # PROJECT
-SOURCE_DIR = ./logfusion
+SOURCE_DIR = ./yaplogger
 SOURCE_PY_FILES = $(SOURCE_DIR)/**/*.py
 
 TEST_DIR = ./tests

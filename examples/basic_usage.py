@@ -1,5 +1,5 @@
 # ruff: noqa
-"""Tests LogFusion basic usage."""
+"""Tests YapLogger basic usage."""
 
 from typing import Any
 

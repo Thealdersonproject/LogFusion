@@ -1,4 +1,4 @@
-"""Tests LogFusion advanced usage."""
+"""Tests YapLogger advanced usage."""
 
 from typing import Any
 
