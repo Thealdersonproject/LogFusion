@@ -2,7 +2,7 @@
 
 from typing import Any, ParamSpec
 
-from logfusion.handlers.loguru_handler import LoguruHandler
+from yaplogger.handlers.loguru_handler import LoguruHandler
 
 P = ParamSpec("P")
 
