@@ -40,7 +40,7 @@ def main() -> None:
     """Main method."""
     setup(
         name="YapLogger",
-        version="0.1.4.2",
+        version="0.1.4.3",
         author="Thiago Dias",
         author_email="thiago@thir.info",
         description="A flexible and extensible logging framework for logging, monitoring, and observability.",
