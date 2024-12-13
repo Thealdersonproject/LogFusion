@@ -1,12 +1,46 @@
-"""A logging handler that uses Loguru for logging."""
+"""A logging handler that uses Loguru for logging.
+
+This module provides a `LoguruHandler` class that integrates with the Loguru logging library.
+The `LoguruHandler` class provides methods to log messages at various severity levels using the Loguru library.
+It includes methods for debug, info, warning, error, critical, and exception logging.
+The purpose of this class is to facilitate uniform logging in an application by abstracting Loguru's
+logging functionality into a dedicated handler class.
+
+Classes:
+    - LoguruHandler: Handler class for integrating with the Loguru logging library.
+
+Usage:
+    ```python
+    from handlers.loguru_handler import LoguruHandler
+
+    handler = LoguruHandler()
+    handler.debug("This is a debug message.")
+    handler.info("This is an info message.")
+    handler.warning("This is a warning message.")
+    handler.error("This is an error message.")
+    handler.critical("This is a critical message.")
+    handler.exception("An exception occurred.", Exception("Example exception"))
+    ```
+
+Note:
+    This module is part of the YapLogger project, which aims to provide a flexible and extensible logging framework for
+    logging, monitoring, and observability.
+"""
 
 from loguru import logger
 
-from yaplogger.handlers.base_handler import BaseHandler
+from . import BaseHandler
 
 
 class LoguruHandler(BaseHandler):
-    """A logging handler that uses Loguru for logging."""
+    """Handler class for integrating with the Loguru logging library.
+
+    This class provides methods to log messages at various severity levels
+    using the Loguru library. It includes methods for debug, info, warning,
+    error, critical, and exception logging. Its purpose is to facilitate
+    uniform logging in an application by abstracting Loguru's logging
+    functionality into a dedicated handler class.
+    """
 
     def debug(self, message: str) -> None:
         """Log a debug message.
