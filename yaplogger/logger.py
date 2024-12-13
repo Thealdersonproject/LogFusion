@@ -1,4 +1,39 @@
-"""A flexible logger that supports multiple logging handlers."""
+# ./yaplogger/logger.py
+"""A flexible logger that supports multiple logging handlers.
+
+This module provides a `Logger` class that supports multiple logging handlers.
+The `Logger` class is designed to be flexible and extensible, allowing developers to easily add new logging
+handlers as needed. It includes methods for logging messages at various severity levels and supports exception logging.
+
+Classes:
+    - Logger: A flexible logger that supports multiple logging handlers.
+
+Usage:
+    ```python
+    from yaplogger.logger import Logger
+    from yaplogger.config import default_config
+
+    # Initialize the logger with the default configuration
+    logger = Logger(default_config)
+
+    # Log messages at various levels
+    logger.debug("This is a debug message.")
+    logger.info("This is an info message.")
+    logger.warning("This is a warning message.")
+    logger.error("This is an error message.")
+    logger.critical("This is a critical message.")
+
+    # Log an exception
+    try:
+        1 / 0
+    except ZeroDivisionError as e:
+        logger.exception("An exception occurred", e)
+    ```
+
+Note:
+    This module is part of the YapLogger project, which aims to provide a flexible and extensible logging
+    framework for logging, monitoring, and observability.
+"""
 
 from typing import Any, ParamSpec
 
