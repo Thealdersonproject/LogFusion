@@ -1,4 +1,4 @@
-# ./yaplogger/constants.py
+# whoami::./yaplogger/constants.py
 """This class holds all the constants for this project."""
 
 
@@ -22,3 +22,5 @@ class Constants:
     PROCESS_UID_DEFAULT_VALUE: str = "<not_informed>"
     PROCESS_NAME_DEFAULT_VALUE: str = "<not_informed>"
     DESCRIPTION_DEFAULT_VALUE: str = "<not_informed>"
+
+    STDOUT_DEFAULT_FORMAT: str = "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"  # noqa: E501
