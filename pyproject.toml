@@ -45,10 +45,18 @@ src = ["yaplogger"]
 line-length = 120
 show-fixes = true
 unsafe-fixes = true
+exclude = [
+    "**/__pycache__",
+    "**/tests",
+    "./examples",
+    "./typings",
+    "./setup.py",
+    "**/decorators.py"
+]
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["COM812", "ISC001", "TCH001", "G002", "G004"]
+ignore = ["COM812", "ISC001", "TCH001", "G002", "G004", "C408", "S101"]
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -69,7 +77,8 @@ exclude = [
     "**/tests",
     "./examples",
     "./typings",
-    "./setup.py"
+    "./setup.py",
+    "**/decorators.py"
 ]
 typeCheckingMode = "strict"
 reportMissingTypeStubs = true
