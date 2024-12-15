@@ -1,6 +1,7 @@
 #whoami::./yaplogger/utils/decorators.py
 """YapLogger Decorators."""
 
+import threading
 from collections.abc import Callable
 from functools import wraps
 from typing import ParamSpec, TypeVar
@@ -8,6 +9,7 @@ from typing import ParamSpec, TypeVar
 T = TypeVar("T")  # Type variable to maintain type hints
 P = ParamSpec("P")
 
+_lock = threading.RLock()  # lock to ensure thread safety
 
 def singleton(cls: type[T]) -> Callable[..., T]:
     """Create and maintain a single instance of an object.
@@ -22,8 +24,9 @@ def singleton(cls: type[T]) -> Callable[..., T]:
 
     @wraps(cls)
     def get_instance(*args: P.args, **kwargs: P.kwargs) -> T:
-        if cls not in instances:
-            instances[cls] = cls(*args, **kwargs)
-        return instances[cls]  # pyright: ignore[reportUnknownVariableType]
+        with _lock:  # acquire lock to ensure thread safety
+            if cls not in instances:
+                instances[cls] = cls(*args, **kwargs)
+            return instances[cls]  # pyright: ignore[reportUnknownVariableType]
 
     return get_instance
