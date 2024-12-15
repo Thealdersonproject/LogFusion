@@ -1,4 +1,4 @@
-# ./yaplogger/config.py
+# whoami::./yaplogger/config.py
 """This module is to set the YapLogger configuration parameters, by using the Config class."""
 
 import time
@@ -7,7 +7,7 @@ from typing import Any, ClassVar
 
 from loguru import logger
 
-from yaplogger.constants import Constants
+from constants import Constants
 
 
 class Config:
@@ -29,8 +29,7 @@ class Config:
         Constants.PROCESS_EXTRAS_KEY: [],
     }
 
-    @staticmethod
-    def configure(*, parameters: dict[str, Any] | None) -> None:
+    def configure(self, *, parameters: dict[str, Any] | None) -> dict[str, Any]:
         """Configures the application with given settings.
 
         This static method modifies the application's internal configuration based on the provided data.
@@ -52,15 +51,17 @@ class Config:
             for k, v in parameters.items():
                 clean_key: str = str(k).lower().strip()
                 logger.debug(f"Validating key: {clean_key}.")
-                if clean_key in Config._configuration:
+                if clean_key in self._configuration:
                     Config._configuration[clean_key] = v
                     logger.debug(f"Key <{clean_key}> set with value: <{v}>")
                 else:
                     logger.debug(f"Key '{k}' not found in default configuration, will be added to extras.")
                     Config._configuration[Constants.PROCESS_EXTRAS_KEY].append({clean_key: v})
 
-        Config.__set_process_id()
-        logger.debug(f"Configuration values: {Config.get_configuration()}")
+        self.__set_process_id()
+        logger.debug(f"Configuration values: {self.parameters}")
+
+        return self.parameters
 
     @classmethod
     def get_process_id(cls) -> str:
@@ -74,8 +75,7 @@ class Config:
         """
         return cls._configuration.get(Constants.PROCESS_UID_KEY, Constants.PROCESS_UID_DEFAULT_VALUE)
 
-    @staticmethod
-    def __set_process_id() -> None:
+    def __set_process_id(self) -> None:
         """Sets a unique process identifier (UID) for the application if not already set.
 
         This static utility method attempts to generate a new unique process identifier
@@ -96,7 +96,7 @@ class Config:
         ----------
         None
         """
-        config = Config._configuration
+        config = self._configuration
         if (
             Constants.PROCESS_UID_KEY in config
             and config[Constants.PROCESS_UID_KEY] is not None
@@ -108,16 +108,16 @@ class Config:
             return
 
         unix_epoch_timestamp: int = int(time.time())
-        process_name = Config.get_configuration().get(Constants.PROCESS_NAME_KEY, Constants.PROCESS_UID_DEFAULT_VALUE)
-        process_description = Config.get_configuration().get(
+        process_name = self.parameters.get(Constants.PROCESS_NAME_KEY, Constants.PROCESS_UID_DEFAULT_VALUE)
+        process_description = self.parameters.get(
             Constants.PROCESS_DESCRIPTION_KEY, Constants.DESCRIPTION_DEFAULT_VALUE
         )
 
         uid = uuid.uuid5(uuid.NAMESPACE_DNS, str(unix_epoch_timestamp) + process_name + process_description)
-        Config._configuration[Constants.PROCESS_UID_KEY] = str(uid)
+        self._configuration[Constants.PROCESS_UID_KEY] = str(uid)
 
-    @staticmethod
-    def get_configuration() -> dict[str, Any]:
+    @property
+    def parameters(self) -> dict[str, Any]:
         """Retrieve the application's configuration details.
 
         This method is responsible for fetching and returning the configuration settings
@@ -127,4 +127,4 @@ class Config:
         Returns:
             dict[str, Any]: A dictionary containing the configuration data.
         """
-        return Config._configuration
+        return self._configuration
