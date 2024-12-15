@@ -6,9 +6,9 @@ from typing import Any
 
 from loguru import logger
 
-from utils import singleton
 from yaplogger.config import Config
 from yaplogger.constants import Constants
+from yaplogger.utils.decorators import singleton
 
 
 @singleton
