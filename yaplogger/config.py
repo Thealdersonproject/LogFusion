@@ -7,7 +7,7 @@ from typing import Any, ClassVar
 
 from loguru import logger
 
-from yaplogger import Constants
+from yaplogger.constants import Constants
 
 
 class Config:
