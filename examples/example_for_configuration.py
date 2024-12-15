@@ -1,6 +1,6 @@
-#./examples/config.py  # noqa: INP001
+#whoami::./examples/example_for_configuration.py
 """This is an example for how to set YapLogger configurations."""
-from yaplogger.config import Config
+from yaplogger import Log
 
 
 def main() -> None:
@@ -22,7 +22,12 @@ def main() -> None:
         },
     )
 
-    Config.configure(parameters=parameters)
+    log = Log(parameters=parameters).logger
+    log.info("Hello from the other side. # INFO")
+    log.debug("Hello from the other side. # DEBUG, This message should not appear.")
+    log.warning("Hello from the other side. # WARNING")
+
+    log.info("Straight out of loguru.")
 
 
 if __name__ == "__main__":
