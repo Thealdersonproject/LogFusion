@@ -4,13 +4,13 @@ authors = [
   { email = "thiago@thir.info" },
   { name = "Thiago Dias" }
 ]
-version = "0.1.4.4"
+version = "0.1.0"
 description = """
-This project aims to create a unified service for logging, monitoring, and observability.
+This project aims to provide a centralized logging solution for projects with multiple steps and workflows.
 
-YapLogger is a flexible and extensible logging framework that supports multiple logging handlers and integrations.
-The project includes core logging functionality, configuration management, utility functions, and decorators for logging.
-It also supports various linters and formatters to ensure code quality and consistency.
+It facilitates tracing by identifying processes throughout their execution using a unique execution ID.
+Logging during the process should help the engineering team debug issues.
+Additionally, it is crucial for ensuring business outcomes by analyzing system behavior.
 """
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -30,10 +30,6 @@ dependencies = [
     "types-setuptools>=75.6.0.20241126",
 ]
 
-[build-system]
-requires = ["setuptools>=75.6.0", "wheel>=0.45.1"]
-build-backend = "setuptools.build_meta"
-
 [tool.uv]
 dev-dependencies = [
     "black==24.10.0",
@@ -49,10 +45,18 @@ src = ["yaplogger"]
 line-length = 120
 show-fixes = true
 unsafe-fixes = true
+exclude = [
+    "**/__pycache__",
+    "**/tests",
+    "./examples/**/*",
+    "./typings",
+    "./setup.py",
+    "**/decorators.py"
+]
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["COM812", "ISC001", "TCH001", "G002", "G004"]
+ignore = ["COM812", "ISC001", "TCH001", "G002", "G004", "C408", "S101"]
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -71,10 +75,10 @@ include = ["yaplogger"]
 exclude = [
     "**/__pycache__",
     "**/tests",
-    "./yaplogger/decorators.py",
-    "./examples",
+    "./examples/**/*",
     "./typings",
-    "./setup.py"
+    "./setup.py",
+    "**/decorators.py"
 ]
 typeCheckingMode = "strict"
 reportMissingTypeStubs = true
