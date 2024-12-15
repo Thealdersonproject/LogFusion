@@ -48,7 +48,7 @@ unsafe-fixes = true
 exclude = [
     "**/__pycache__",
     "**/tests",
-    "./examples",
+    "./examples/**/*",
     "./typings",
     "./setup.py",
     "**/decorators.py"
@@ -75,7 +75,7 @@ include = ["yaplogger"]
 exclude = [
     "**/__pycache__",
     "**/tests",
-    "./examples",
+    "./examples/**/*",
     "./typings",
     "./setup.py",
     "**/decorators.py"
