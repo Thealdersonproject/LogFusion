@@ -1,6 +1,7 @@
 # whoami::./yaplogger/utils/__init__.py
 """Yaplogger Utils."""
 
-from .decorators import singleton
+from yaplogger.utils.decorators import singleton
+from yaplogger.utils.enums import LogLevel, SeverityLevel
 
-__all__ = ["singleton"]
+__all__ = ["LogLevel", "SeverityLevel", "singleton"]
