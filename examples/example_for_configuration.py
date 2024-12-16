@@ -13,7 +13,7 @@ def main() -> None:
     """
     # Create a custom configuration
     parameters = dict(
-        process_uid="my-process-uid",
+        # process_uid="my-process-uid",
         process_name="My Process",
         process_description="This is my process.",
         process_extras={
@@ -22,11 +22,12 @@ def main() -> None:
         },
     )
 
-    log = Log(parameters=parameters).logger
-    log.info("Hello from the other side. # INFO")
-    log.debug("Hello from the other side. # DEBUG, This message should not appear.")
-    log.warning("Hello from the other side. # WARNING")
-
+    log = Log(parameters=parameters)
+    log.info("Hello from the other side. ", extra_value="# INFO")
+    log.debug("Hello from the other side.", extra_value="# DEBUG, This message should not appear.")
+    log.info("Hello from the other side.", extra_value="# INFO, This message should appear.")
+    log.warning("Hello from the other side.", extra_value="# WARNING")
+    log.critical("Critical message, watch out.", extra_value="Error message")
     log.info("Straight out of loguru.")
 
 
